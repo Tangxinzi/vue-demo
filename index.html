@@ -12,9 +12,8 @@
   <div id="app">
     <div class="ui container">
       <div class="ui hidden divider"></div>
-      <button class="ui button" v-on:click="like">Like</button>
-      <div class="ui red circular label">
-        {{ counter }}
+      <div class="ui input">
+        <input type="text" v-on:keyup.enter="process">
       </div>
     </div>
   </div>

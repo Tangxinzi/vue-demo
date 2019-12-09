@@ -4,9 +4,8 @@ var vm = new Vue({
     counter: 0
   },
   methods: {
-    like (event) {
-      this.counter += 1
-      console.log(event)
+    process (event) {
+      console.log(event.target.value)
     }
   }
 })
