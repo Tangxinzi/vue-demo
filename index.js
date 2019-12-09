@@ -1,6 +1,11 @@
 var vm = new Vue({
   el: '#app',
   data: {
-    message: 'hello'
+    selected: '',
+    options: [
+      { value: 'hello' },
+      { value: 'hola' },
+      { value: '您好' }
+    ]
   }
 })
