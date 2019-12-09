@@ -8,9 +8,29 @@
   <link rel="stylesheet" href="semantic.min.css">
   <script src="vue.js" charset="utf-8"></script>
   <script src="vue-router.js" charset="utf-8"></script>
+  <style media="screen">
+    .ui.item.menu {
+      margin-top: 24px;
+    }
+
+    .ui.segment {
+      padding: 32px;
+    }
+  </style>
 </head>
 <body>
-  <div id="app"></div>
+  <div id="app" class="ui container">
+    <div class="ui two item menu">
+      <router-link class="item" active-class="active" exact to="/">首页</router-link>
+      <router-link
+        class="item"
+        active-class="active"
+        :to="{ name: 'events' }">活动</router-link>
+    </div>
+    <div class="ui piled segment">
+      <router-view></router-view>
+    </div>
+  </div>
   <script src="./index.js" charset="utf-8"></script>
 </body>
 </html>
