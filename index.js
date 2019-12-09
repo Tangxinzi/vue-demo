@@ -1,15 +1,9 @@
-Vue.component('comment', {
-  props: ['comment'],
-  template: '<li>{{ comment.content }}</li>'
-})
-
-var app = new Vue({
+var vm = new Vue({
   el: '#app',
-  data: {
-    comments: [
-      { content: 'nice ~' },
-      { content: 'great ~' },
-      { content: 'awesome ~' }
-    ]
+  beforeDestroy () {
+    console.log('要被敢掉了 ...')
+  },
+  destroyed() {
+    console.log('bye bye ~')
   }
 })
