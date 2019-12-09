@@ -12,9 +12,8 @@
     <div v-show="welcome" v-bind:title="title">
       {{ message }}
     </div>
-    <div v-if="welcome" v-bind:title="title">
-      {{ message }}
-    </div>
+    <input type="text" name="" value="" v-model="message">
+    <button type="button" name="button" v-on:click="logMessage">button</button>
   </div>
   <script src="./index.js" charset="utf-8"></script>
 </body>
