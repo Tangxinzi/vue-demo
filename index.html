@@ -9,7 +9,10 @@
 </head>
 <body>
   <div id="app">
-    <div v-bind:title="title">
+    <div v-show="welcome" v-bind:title="title">
+      {{ message }}
+    </div>
+    <div v-if="welcome" v-bind:title="title">
       {{ message }}
     </div>
   </div>
