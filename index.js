@@ -1,13 +1,14 @@
 Vue.component('ui-botton', {
-  template: '<button type="button" name="button" class="ui button">{{ text }}</button>',
-  props: {
-    text: {
-      type: String,
-      default: 'Button',
-      // required: true,
-      validator (value) {
-        return value.length > 3
-      }
+  template: '<button type="button" name="button" class="ui button" @click="increment">{{ counter }}</button>',
+  data () {
+    return {
+      counter: 0
+    }
+  },
+  methods: {
+    increment () {
+      this.counter += 1,
+      this.$emit('increment')
     }
   }
 })
@@ -15,6 +16,11 @@ Vue.component('ui-botton', {
 var vm = new Vue({
   el: '#app',
   data: {
-    published: false
+    total: 0
+  },
+  methods: {
+    incrementTotal () {
+      this.total += 1
+    }
   }
 })
