@@ -12,8 +12,12 @@
   <div id="app">
     <div class="ui container">
       <div class="ui hidden divider"></div>
+      <div class="ui green inverted segment">{{ message }}</div>
       <div class="ui input">
-        <input type="text" v-on:keyup.enter="process">
+        <input type="text" v-bind:value="message" v-on:input="message = $event.target.value">
+      </div>
+      <div class="ui input">
+        <input type="text" v-model="message">
       </div>
     </div>
   </div>
