@@ -9,3 +9,27 @@ const store = new Vuex.Store({
     }
   }
 })
+
+const Counter = {
+  template: `
+    <div class="ui red circular label">
+      {{ count }}
+    </div>
+  `,
+  computed: {
+    count() {
+      return this.$store.state.count
+    }
+  }
+}
+
+const app = new Vue({
+  el: '#app',
+  store,
+  components: { Counter },
+  template: `
+    <div class="app">
+      <counter></counter>
+    </div>
+  `
+})
