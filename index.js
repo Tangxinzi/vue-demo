@@ -1,3 +1,5 @@
+const mapGetters = Vuex.mapGetters
+
 const store = new Vuex.Store({
   state: {
     count: []
@@ -59,16 +61,19 @@ const Counter = {
       <add-button></add-button>
       <remove-button></remove-button>
       <div class="ui red circular label">
-        {{ count }}
+        {{ average }}
       </div>
+      <div class="ui divider"></div>
+      共 {{ total }} 个项目，合计 {{ sum }}。
     </div>
   `,
   components: { AddButton, RemoveButton },
   computed: {
-    count() {
-      return this.$store.getters.average
-      // return this.$store.state.count.reduce((a, b) => a + b, 0)
-    }
+    ...mapGetters([
+      'sum', // countSum: 'sum'
+      'total',
+      'average'
+    ])
   }
 }
 
