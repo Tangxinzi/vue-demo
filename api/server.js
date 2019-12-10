@@ -4,6 +4,10 @@ const app = express()
 const router = express.Router()
 
 app.use(bodyParser.json())
+app.use((request, response, next) => {
+  response.header('Access-Control-Allow-Origin', '*')
+  next()
+})
 
 let count = [1, 2, 3]
 
