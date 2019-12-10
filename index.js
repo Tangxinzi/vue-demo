@@ -34,7 +34,21 @@ const store = new Vuex.Store({
         .then((response) => {
           content.commit('setCount', response.data.count)
         })
-    }
+    },
+    addCount({ commit }, payload ) {
+      return axios.post('http://localhost:8080/api/count', {
+        number: payload
+      })
+      .then((response) => {
+        commit('add', payload)
+      })
+    },
+    removeCount({ commit }) {
+      return axios.delete('http://localhost:8080/api/count')
+      .then((response) => {
+        commit('remove')
+      })
+    },
   }
 })
 
@@ -45,8 +59,11 @@ const AddButton = {
     </button>
   `,
   methods: {
+    ...mapActions([
+      'addCount'
+    ]),
     add() {
-      this.$store.commit('add', Math.floor(Math.random() * (10 - 1) + 1))
+      this.addCount(Math.floor(Math.random() * (10 - 1) + 1))
     }
   }
 }
@@ -58,11 +75,11 @@ const RemoveButton = {
     </button>
   `,
   methods: {
-    add() {
-      this.$store.commit('add', Math.floor(Math.random() * (10 - 1) + 1))
-    },
+    ...mapActions([
+      'removeCount'
+    ]),
     remove() {
-      this.$store.commit('remove')
+      this.removeCount()
     },
   }
 }
