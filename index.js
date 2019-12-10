@@ -1,11 +1,22 @@
 const store = new Vuex.Store({
   state: {
-    count: 0
+    count: []
   },
   mutations: {
     // store.commit('add')
     add(state, payload) {
-      state.count += payload
+      state.count.push(payload)
+    }
+  },
+  getters: {
+    sum(state) {
+      return state.count.reduce((a, b) => a + b, 0)
+    },
+    total(state) {
+      return state.count.length
+    },
+    average(state, getters) {
+      return +(getters.sum / getters.total * 100 / 100).toFixed(1)
     }
   }
 })
@@ -18,7 +29,8 @@ const Counter = {
   `,
   computed: {
     count() {
-      return this.$store.state.count
+      return this.$store.getters.average
+      // return this.$store.state.count.reduce((a, b) => a + b, 0)
     }
   }
 }
